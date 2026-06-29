@@ -1,13 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cybershield</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield 360 | IBM SkillsBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">CyberShield<span>360</span></div>
+        <nav id="navbar">
+            <a href="#" data-target="sec-home" class="active">Home</a>
+            <a href="#" data-target="sec-pass-analyzer">Analyzer</a>
+            <a href="#" data-target="sec-url-detector">Phishing</a>
+            <a href="#" data-target="sec-spam-detector">Spam</a>
+            <a href="#" data-target="sec-pass-generator">Generator</a>
+            <a href="#" data-target="sec-learn">Learn</a>
+            <a href="#" data-target="sec-quiz">Quiz</a>
+            <a href="#" data-target="sec-about">About</a>
+            <a href="#" data-target="sec-contact">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn">☰</button>
+    </header>
+
+    <main>
+        <section id="sec-home" class="page-section active">
+            <div class="hero glass-card">
+                <h1>Secure Your Digital Future</h1>
+                <p>Advanced cyber security tools and education, inspired by IBM Carbon Design.</p>
+                <button class="btn-primary" onclick="document.querySelector('[data-target=\'sec-learn\']').click()">Start Learning</button>
+            </div>
+        </section>
+
+        <section id="sec-pass-analyzer" class="page-section hidden">
+            <div class="glass-card module-card">
+                <h2>Password Strength Analyzer</h2>
+                <div class="input-group">
+                    <input type="password" id="pa-input" placeholder="Type your password here...">
+                    <button id="pa-toggle" class="btn-secondary">Show</button>
+                </div>
+                <div class="progress-bar"><div id="pa-meter" class="progress-fill meter-red"></div></div>
+                <div class="stats-grid">
+                    <div class="stat-box"><span>Entropy:</span> <span id="pa-entropy">0 bits</span></div>
+                    <div class="stat-box"><span>Crack Time:</span> <span id="pa-time">Instant</span></div>
+                </div>
+                <ul id="pa-suggestions" class="suggestions-list"></ul>
+            </div>
+        </section>
+
+        <section id="sec-url-detector" class="page-section hidden">
+            <div class="glass-card module-card">
+                <h2>URL Phishing Detector</h2>
+                <div class="input-group">
+                    <input type="text" id="url-input" placeholder="Enter URL (e.g., http://suspicious-link.com)">
+                    <button id="url-btn" class="btn-primary">Analyze</button>
+                </div>
+                <div id="url-result-box" class="result-box hidden">
+                    <h3 id="url-risk-level"></h3>
+                    <p id="url-score"></p>
+                    <ul id="url-details"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-spam-detector" class="page-section hidden">
+            <div class="glass-card module-card">
+                <h2>Email Spam Detector</h2>
+                <textarea id="spam-input" rows="6" placeholder="Paste email content here..."></textarea>
+                <button id="spam-btn" class="btn-primary" style="margin-top: 1rem;">Analyze Email</button>
+                <div id="spam-result-box" class="result-box hidden">
+                    <h3 id="spam-risk-level"></h3>
+                    <p id="spam-score"></p>
+                    <p id="spam-keywords" class="warning-text"></p>
+                    <p id="spam-recommendation"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-pass-generator" class="page-section hidden">
+            <div class="glass-card module-card">
+                <h2>Secure Password Generator</h2>
+                <div class="pg-display">
+                    <span id="pg-output">Click Generate</span>
+                    <button id="pg-copy" class="btn-secondary">Copy</button>
+                </div>
+                <div class="slider-group">
+                    <label>Length: <span id="pg-length-val">16</span></label>
+                    <input type="range" id="pg-length" min="8" max="64" value="16">
+                </div>
+                <div class="checkbox-grid">
+                    <label><input type="checkbox" id="pg-upper" checked> Uppercase</label>
+                    <label><input type="checkbox" id="pg-lower" checked> Lowercase</label>
+                    <label><input type="checkbox" id="pg-num" checked> Numbers</label>
+                    <label><input type="checkbox" id="pg-sym" checked> Symbols</label>
+                </div>
+                <button id="pg-btn" class="btn-primary">Generate Password</button>
+            </div>
+        </section>
+
+        <section id="sec-learn" class="page-section hidden">
+            <h2>Learn Cyber Security</h2>
+            <div class="grid-cards" id="learn-container">
+                </div>
+        </section>
+
+        <section id="sec-quiz" class="page-section hidden">
+            <div class="glass-card module-card" id="quiz-card">
+                <h2>Knowledge Check</h2>
+                <div id="quiz-setup">
+                    <p>Test your knowledge with 10 questions.</p>
+                    <button id="quiz-start" class="btn-primary">Start Quiz</button>
+                </div>
+                <div id="quiz-active" class="hidden">
+                    <p id="quiz-progress-text">Question 1 of 10</p>
+                    <div class="progress-bar"><div id="quiz-progress-fill" class="progress-fill meter-blue" style="width: 10%"></div></div>
+                    <h3 id="quiz-question" style="margin: 1.5rem 0;"></h3>
+                    <div id="quiz-options" class="options-grid"></div>
+                </div>
+                <div id="quiz-result" class="hidden">
+                    <h3 id="quiz-score-text"></h3>
+                    <button id="quiz-restart" class="btn-primary">Restart Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-about" class="page-section hidden">
+            <div class="glass-card module-card">
+                <h2>About CyberShield 360</h2>
+                <p>Developed for the <strong>IBM SkillsBuild</strong> initiative.</p>
+                <p>This platform aims to spread cybersecurity awareness through interactive, client-side tools and educational modules. It focuses on privacy, processing all data locally within your browser.</p>
+            </div>
+        </section>
+
+        <section id="sec-contact" class="page-section hidden">
+            <div class="glass-card module-card">
+                <h2>Contact Us</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-msg">Message</label>
+                        <textarea id="contact-msg" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                    <p id="contact-status" class="hidden"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
 </html>
