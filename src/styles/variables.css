@@ -1,0 +1,34 @@
+:root {
+  --bg-main: #0f1115;
+  --bg-glass: rgba(22, 22, 22, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f4f4f4;
+  --text-secondary: #a8a8a8;
+  
+  /* IBM Blue & Accents */
+  --ibm-blue: #0f62fe;
+  --ibm-blue-hover: #0353e9;
+  --accent-success: #24a148;
+  --accent-warning: #f1c21b;
+  --accent-danger: #da1e28;
+  
+  --glass-blur: blur(12px);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Reusable Glass Effect Class */
+.ibm-glass {
+  background: var(--bg-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
